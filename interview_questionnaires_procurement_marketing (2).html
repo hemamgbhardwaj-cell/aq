@@ -1,0 +1,290 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:1rem 0;font-family:var(--font-sans)}
+.tabs{display:flex;gap:6px;margin-bottom:1.2rem}
+.tab{padding:6px 16px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary)}
+.q-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin-bottom:10px}
+.q-header{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.q-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px}
+.q-body{flex:1}
+.q-text{font-size:14px;font-weight:500;color:var(--color-text-primary);line-height:1.5;margin-bottom:6px}
+.why-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--color-text-secondary);margin-bottom:3px}
+.why-text{font-size:12px;color:var(--color-text-secondary);line-height:1.6}
+.probe-wrap{margin-top:8px}
+.probe-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:4px}
+.probe{font-size:12px;color:var(--color-text-primary);padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);line-height:1.5}
+.probe:last-child{border:none}
+.design-link{font-size:12px;margin-top:8px;padding:6px 10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);color:var(--color-text-secondary);line-height:1.5}
+.design-link strong{color:var(--color-text-primary);font-weight:500}
+.notes-area{width:100%;min-height:44px;resize:vertical;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px;font-size:12px;font-family:var(--font-sans);color:var(--color-text-primary);background:transparent;margin-top:8px}
+.notes-area::placeholder{color:var(--color-text-secondary)}
+.section-divider{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-secondary);margin:1.4rem 0 .6rem;padding-bottom:4px;border-bottom:0.5px solid var(--color-border-tertiary)}
+</style>
+
+<div class="wrap">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('proc',this)">Product acquisition manager</button>
+  <button class="tab" onclick="showTab('mkt',this)">Marketing team</button>
+</div>
+
+<div id="proc-panel">
+<div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem">30–40 min interview. Show actual kit photos as you ask each question. Go in with the 40-in-1 kit on the table between you. The physical object makes abstract cost questions concrete.</div>
+
+<div class="section-divider">Block A — BOM and cost structure</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#EEEDFE;color:#534AB7">P1</div>
+    <div class="q-body">
+      <div class="q-text">What is the approximate BOM cost of the 40-in-1 kit at your current production volume, and what percentage of that goes to: sensors, processor, chassis, cables, packaging, and instruction booklet?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">You need to know where cost is concentrated before you recommend any design change. Recommending snap-fit connectors without knowing that the current JST system is 3% of BOM and snap-fit is 9% is a dead-end conversation. Get the breakdown before suggesting anything.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes if they're vague:</div>
+        <div class="probe">"What's the single most expensive line item in the BOM?"</div>
+        <div class="probe">"If we had to cut 15% of BOM cost, where would you look first?"</div>
+        <div class="probe">"How does the 40-in-1 BOM compare to the 5-in-1 per unit?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Chassis material, fastener type, connector standard for Arduino Uno Kit — all must fit within a BOM that implies ~₹720–900 at ₹3,599 retail.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#EEEDFE;color:#534AB7">P2</div>
+    <div class="q-body">
+      <div class="q-text">What is the target retail price for the Arduino Uno Kit, and what BOM cost does that constrain us to?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">This is the constraint that will govern every material and component decision for the next 5 months. Get the number locked. Typical consumer electronics kits run 20–25% BOM-to-retail ratio. At ₹3,599 that's ~₹720–900. If the Arduino Uno Kit targets ₹2,499, that's ₹500–625 BOM ceiling — and the Arduino Nano alone costs ~₹150–200.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"Is there a competitor price we're targeting to go above or below?"</div>
+        <div class="probe">"What's the maximum we can spend on the processor board alone?"</div>
+        <div class="probe">"Are we considering Indian-made Arduino-compatible alternatives?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Whether we can afford new sensor housings, redesigned chassis, or premium packaging — all gated by this number.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#EEEDFE;color:#534AB7">P3</div>
+    <div class="q-body">
+      <div class="q-text">[Show screw photo] If we replaced the M3 screw and nut system with a tool-free connection method — press-fit, quarter-turn, or snap-fit — what are our options given current manufacturing, and what would it add to unit cost?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">The M3 screw system is the single biggest tactile pain point for the target age group (10–13 year old hand anthropometry + fine motor development). But you cannot recommend the replacement without knowing what's feasible. This question surfaces both the capability and the cost impact simultaneously.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"Do we have any snap-fit moulding capability in-house or via suppliers?"</div>
+        <div class="probe">"What's the minimum order quantity for a custom plastic mount?"</div>
+        <div class="probe">"Which other products in the market use tool-free motor mounts at this price point?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Motor and sensor mounting system for Arduino Uno Kit — the most consequential physical assembly decision.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="section-divider">Block B — Supplier and component constraints</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#EEEDFE;color:#534AB7">P4</div>
+    <div class="q-body">
+      <div class="q-text">[Show tape photo] What adhesive or mounting alternatives are feasible within our current supplier network? Do any current suppliers offer snap-fit or press-fit variants of the components we already use?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">Double-sided tape is the second major tactile failure — adhesion fails after 3–4 dismantles, which is well within the use life of a 40-activity kit. The question is whether a better solution exists in the existing supplier network (cheapest path) or requires a new supplier (timeline and cost risk).</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"Do we have access to VHB tape or industrial adhesive at scale?"</div>
+        <div class="probe">"Has any other kit we make solved the repeated-mount problem?"</div>
+        <div class="probe">"Is the chassis supplier the constraint, or is it the sensor housing?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Sensor mounting system for Arduino Uno Kit — repeated reconfiguration across 25 activities is even more demanding than the 40-in-1.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#EEEDFE;color:#534AB7">P5</div>
+    <div class="q-body">
+      <div class="q-text">Which sensors for the Arduino Uno Kit are already in our supplier network, and which are new sourcing requirements? What is the unit cost difference between the sensors we currently use and any upgraded variants?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">The Arduino Uno Kit introduces 2 new sensors not in the 40-in-1 (touch sensor and sound sensor). These are new supplier relationships. Getting this information now prevents a Month 4 surprise when you find out the sound sensor you've designed around has a 20-week lead time.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"Is the touch sensor already in any other product we make?"</div>
+        <div class="probe">"Do the new sensors use the same 3-pin JST connector as the rest of the kit?"</div>
+        <div class="probe">"What's our current sensor supplier MOQ and lead time?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Whether to standardise connector type across all 7 sensor types — a design decision with massive cascade implications.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="section-divider">Block C — The unlocking question</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#EEEDFE;color:#534AB7">P6</div>
+    <div class="q-body">
+      <div class="q-text">What is the one manufacturing or procurement constraint that you wish designers understood before bringing you new product ideas?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">This is the most important question in the entire interview. Ask it last, after you've built rapport through the previous 5 questions. It surfaces the implicit constraint — the thing that kills ideas in manufacturing review that nobody told you about in the design brief. Every experienced procurement manager has one. You need it before Month 3.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes if they say "nothing":</div>
+        <div class="probe">"Has any product idea come in from design in the last year that you had to send back? What was the reason?"</div>
+        <div class="probe">"If we showed you a concept using a new type of connector — what's the first thing you'd check?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Everything. This answer shapes the constraint section of your design brief.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+</div>
+
+<div id="mkt-panel" style="display:none">
+<div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem">25–30 min interview. Bring Amazon review printouts and show them. Marketing teams often don't read reviews systematically — showing them what customers actually say changes the conversation entirely.</div>
+
+<div class="section-divider">Block A — Customer and channel intelligence</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#E1F5EE;color:#0F6E56">M1</div>
+    <div class="q-body">
+      <div class="q-text">Who is actually buying the 40-in-1 kit — what do we know about the buyer (parent? school? gifter?) vs the user (child)? Are they the same person, and does that affect how we should position the Arduino Uno Kit?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">In educational products, the buyer and the user are almost never the same person. The parent buys on perceived educational value and price. The child uses on engagement and satisfaction. These two motivations are often in conflict. Understanding which one drove the 40-in-1 purchase tells you whether the Arduino Uno Kit needs to be positioned on learning outcomes (for parents) or on excitement (for children) — or both, in different channels.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"What percentage of sales come through gift occasions (Diwali, birthdays)?"</div>
+        <div class="probe">"Do school purchases use different decision criteria than parent purchases?"</div>
+        <div class="probe">"What does our Amazon listing say vs what reviewers say the product actually is?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Packaging hierarchy — what goes on the front (excitement for child) vs back (curriculum alignment for parent). Activity naming strategy.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#E1F5EE;color:#0F6E56">M2</div>
+    <div class="q-body">
+      <div class="q-text">What is the single most common reason a customer gives for choosing us over Avishkaar or other competitors? And what is the most common reason for a return or low rating?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">The purchase reason tells you your actual competitive advantage (often not what you think it is). The return reason tells you your biggest design failure. These two data points bracket your design space more precisely than any brief could. If customers buy for "curriculum alignment" and return for "instructions too hard," that's a direct design brief for the Arduino Uno Kit instruction system.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"Do we track return reasons in a structured way? Can I see the data?"</div>
+        <div class="probe">"What do negative Amazon reviews say most often — is there a pattern?"</div>
+        <div class="probe">"Has customer feedback ever changed a product decision at Butterfly?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Instruction system design, difficulty calibration, and packaging communication for the Arduino Uno Kit.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="section-divider">Block B — Positioning and communication</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#E1F5EE;color:#0F6E56">M3</div>
+    <div class="q-body">
+      <div class="q-text">How do we currently communicate the learning progression across our robotics kit family — 5-in-1, 10-in-1, 40-in-1? Does a customer clearly understand that these are a sequence, or do they feel like separate products?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">If a parent who owns the 5-in-1 doesn't know the 40-in-1 exists as the logical next product, you have a retention and upsell problem. The Arduino Uno Kit is the most advanced rung of this ladder. If the ladder isn't communicated clearly, the Arduino kit will be seen as a standalone and compared directly against Elegoo kits on price — which it will lose. The marketing narrative needs to frame it as the natural graduation product.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"Is there any cross-sell from the 5-in-1 product page to the 40-in-1?"</div>
+        <div class="probe">"Do we have any customer data showing upgrade purchases within the robotics family?"</div>
+        <div class="probe">"How do we handle the age overlap — 5-in-1 is 8–12 and 40-in-1 is 8–15?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Packaging language for Arduino Uno Kit — should say "the next step after your 40-in-1" rather than positioning as a standalone.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#E1F5EE;color:#0F6E56">M4</div>
+    <div class="q-body">
+      <div class="q-text">What channels does the Arduino Uno Kit need to work in — Amazon, D2C, schools, gifting — and do those channels have different requirements for how the product looks or is described?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">A product sold through Amazon needs a hero image that communicates everything in 3 seconds at thumbnail size. A product sold through a school kit program needs a learning outcomes sheet and curriculum mapping. A gifting product needs strong unboxing experience. If the Arduino kit needs to perform in all three, the packaging system must be designed with three different communication goals — which affects the industrial design of the box, insert, and manual.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"What percentage of our robotics kit revenue comes from Amazon vs D2C?"</div>
+        <div class="probe">"Has any school expressed interest in the Arduino kit already?"</div>
+        <div class="probe">"What's our gifting season calendar — Diwali? Year-end?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Packaging hierarchy, unboxing sequence, insert design — all channel-dependent.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="section-divider">Block C — Review and feedback intelligence</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#E1F5EE;color:#0F6E56">M5</div>
+    <div class="q-body">
+      <div class="q-text">[Show Amazon review printouts] Do we systematically read and categorise customer reviews, or does this happen informally? Who owns this at Butterfly, and has any product decision been changed because of review data?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">Most STEM kit companies at Butterfly's scale don't have a formal review analysis process. If no one owns this, there's an enormous untapped data source sitting in public. The answer also tells you whether your review methodology (which you'll present later) will face internal resistance or be welcomed as a new capability.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes:</div>
+        <div class="probe">"What's our current Amazon star rating for the 40-in-1, and do we know why?"</div>
+        <div class="probe">"Have we ever responded to a negative review and changed customer perception?"</div>
+        <div class="probe">"Is there any NPS or post-purchase survey we run currently?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Establishes internal appetite for evidence-based design decisions. Your review methodology is your competitive intelligence system.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+<div class="q-card">
+  <div class="q-header">
+    <div class="q-num" style="background:#E1F5EE;color:#0F6E56">M6</div>
+    <div class="q-body">
+      <div class="q-text">If we could tell one story about the Arduino Uno Kit in 30 seconds to a parent standing in a store, what would that story be? And does that story currently exist anywhere in our marketing?</div>
+      <div class="why-label">Why you're asking</div>
+      <div class="why-text">This is the 30-second pitch question — it forces clarity. Marketing teams often have 10 messages and no story. The answer reveals whether there's a coherent product narrative yet, or whether you'll be building one from scratch. The gap between the answer they give and the answer that a parent actually responds to is your positioning brief.</div>
+      <div class="probe-wrap">
+        <div class="probe-label">Probes if their answer is product-feature-based:</div>
+        <div class="probe">"Would a parent buy that story, or is it a description? What's the emotional hook?"</div>
+        <div class="probe">"What does the child become by using this kit? Not what they learn — who they become?"</div>
+      </div>
+      <div class="design-link"><strong>Design decision linked:</strong> Activity naming strategy, packaging front headline, and the emotional design brief for the Arduino Uno Kit.</div>
+    </div>
+  </div>
+  <textarea class="notes-area" placeholder="Notes from interview..."></textarea>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function showTab(id, btn){
+  document.getElementById('proc-panel').style.display = id==='proc'?'block':'none';
+  document.getElementById('mkt-panel').style.display = id==='mkt'?'block':'none';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
